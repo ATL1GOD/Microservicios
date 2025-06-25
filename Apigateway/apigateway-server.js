@@ -31,8 +31,14 @@ const logger = winston.createLogger({
     ]
 });
 
+// Configurar CORS
+app.use(cors({
+    origin: '*',  // Permite solicitudes de cualquier origen (puedes cambiarlo para restringir ciertos orígenes)
+    methods: ['GET', 'POST', 'DELETE'],  // Métodos permitidos
+    allowedHeaders: ['Content-Type']  // Cabeceras permitidas
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(morgan('combined', {
     stream: {
@@ -43,7 +49,7 @@ app.use(morgan('combined', {
 // Ruta: Películas
 app.get('/api/peliculas', async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:3001/peliculas');
+        const response = await axios.get('https://microservicio-peliculas-229692202590.northamerica-south1.run.app/peliculas');
         logger.info('Consulta de películas realizada');
         res.json(response.data);
     } catch (err) {
@@ -55,7 +61,7 @@ app.get('/api/peliculas', async (req, res) => {
 // Ruta: Ventas
 app.get('/api/ventas', async (req, res) => {
     try {
-        const response = await axios.get('http://localhost:3002/ventas');
+        const response = await axios.get('https://microservicio-ventas-229692202590.northamerica-south1.run.app/ventas');
         logger.info('Consulta de ventas realizada');
         res.json(response.data);
     } catch (err) {
@@ -67,7 +73,7 @@ app.get('/api/ventas', async (req, res) => {
 // Ruta: Compras
 app.post('/api/compras', async (req, res) => {
     try {
-        const response = await axios.post('http://localhost:3003/comprar', req.body);
+        const response = await axios.post('https://microservicio-compras-229692202590.europe-west1.run.app/comprar', req.body);
         logger.info(`Compra realizada por ${req.body.nombre_cliente}`);
         res.json(response.data);
     } catch (err) {
