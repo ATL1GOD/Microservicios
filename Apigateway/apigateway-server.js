@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Asegurar que exista la carpeta "logs"
 const logDir = path.join(__dirname, 'logs');
