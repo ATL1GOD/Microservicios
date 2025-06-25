@@ -1,7 +1,7 @@
 {
   "name": "apigateway",
   "version": "1.0.0",
-  "main": "gateway-server.js",
+  "main": "apigateway-server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,9 +13,11 @@
     "axios": "^1.10.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "fs": "^0.0.1-security",
     "http-proxy-middleware": "^3.0.5",
     "morgan": "^1.10.0",
     "mysql2": "^3.14.1",
+    "path": "^0.12.7",
     "winston": "^3.17.0"
   }
 }
