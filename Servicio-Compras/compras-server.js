@@ -7,8 +7,13 @@ const winston = require('winston');
 const app = express();
 const port = process.env.PORT || 3003;
 
-// Middleware
-app.use(cors());
+// Configurar CORS
+app.use(cors({
+    origin: '*',  // Permite solicitudes de cualquier origen (puedes cambiarlo para restringir ciertos orígenes)
+    methods: ['GET', 'POST', 'DELETE'],  // Métodos permitidos
+    allowedHeaders: ['Content-Type']  // Cabeceras permitidas
+}));
+
 app.use(express.json());
 
 // Logger con Winston
